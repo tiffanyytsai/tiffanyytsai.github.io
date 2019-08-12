@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weather App Challenge - Canmap Systems</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  <!--css externals-->
+  <link rel="stylesheet" href="style/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style/css/style.css">
+  <!--js libraries-->
+  <script type="text/javascript" src="style/js/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" src="style/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="style/js/moment.min.js"></script>
+  <!--fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,800" rel="stylesheet">
+  <!--favicon, cause why not!-->
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+</head>
+
+<!--TOP HALF CURRENT WEATHER-->
+
+<body onload="init()">
+
+<header class="top-banner" style="background-image: url('img/top-bg.jpg')">  
+
+<div class="time-fixed">
+  <div id="divUTC" class="hide"></div><!--UTC time hidden, converted to local time-->
+  <h2><div id="divLocal"></div></h2>
+</div>
+
+<div class="container">
+
+<a href="#menu"><img src="img/menu.svg" id="menu" alt="menu" /></a>    
+
+  <h1>vancouver, bc</h1> 
+  <h3>Not here?</h3>
+
+  <div class="row" style="padding-top:30px"> 
+    <div class="col-xs-5 col-xs-offset-1 col-sm-3 col-sm-offset-3" align="right">
+      <img src="img/heavy-rain.png" class="zoom img-responsive" style="padding-bottom:55px;" />
+    </div>
+
+  <div class="col-xs-5 col-sm-3" align="left">
+    <h4>HEAVY RAIN</h4>
+    <font class="temp" id="mainTemp"></font>
+      <div class="btn-group main" role="group" aria-label="..."> <!---Toggles for C and F for entire page-->
+        <button class="active" onclick="displayCelcius()">ºC</button>|
+        <button onclick="displayFahrenheit()">ºF</button>
+      </div>
+        <h4>feels like 12</h4>
+  </div>
+  </div>
+
+  <div class="row"> 
+    <div class="col-xs-4" align="center">
+      <img src="img/circle1.png" class="circle zoom"/>
+    </div>
+
+    <div class="col-xs-4" align="center">
+      <img src="img/circle2.png" class="circle zoom"/>
+    </div>
+      
+    <div class="col-xs-4" align="center">
+      <img src="img/circle3.png" class="circle zoom"/>
+    </div>
+  </div>
+</header>  
+
+<!--bottom half, forecasts--> 
+<div class="container weatherbump" style="top:-50px;">
+
+<!--forecast filter toggles 36h 7d 14d (didnt make 14 days one)-->
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1" align="center">
+      <p class="gray">showing forecast for next</p>
+    </div>
+  <div class="col-xs-12 col-sm-6 col-md-5" align="center">
+    <div class="btn-group term-forecast gray-box" role="group" aria-label="...">
+      <button onclick="showForecast1();" class="active" style="padding-left:30px;">36 hours</button>
+      <button onclick="hideForecast1();">7 days</button>
+      <button onclick="" style="padding-right:30px;">14 days</button>
+    </div>
+  </div>
+</div>
+
+<!---forecast boxes 36 hours, ONLY THIS SET IS LINKED WITH C TO F CONVERSION for purpose of this project-->
+<div class="row forecastbox">
+
+<!--box 1-->
+  <div class="col-sm-2 col-sm-offset-1 col-xs-5 weather-box" align="center">
+    <div class="row">
+      <div class="col-sm-6 col-xs-6" align="right">
+        <img src="img/heavy-rain-gray.png" class="zoom img-responsive" />
+      </div>
+
+    <div class="col-sm-6 col-xs-6" align="left">
+      <font class="temp-mini" id="temp1"></font>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <h6>THU EVENING</h6><h5>HEAVY RAIN</h5>
+        <p align="left" style="padding-top:8px;">
+        <b>POP:</b> 90%<br/>
+        <b>Rain:</b> ~15 mm<br/>
+        <b>Wind:</b> 20 km/h E<br/>
+        <b>Wind gust:</b> 35 km/h<br/>
+        <b>Humidity:</b> 85%<br/>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+
+<!--box 2-->
+   <div class="col-sm-2 col-xs-5 weather-box-second" align="center">
+    <div class="row">
+      <div class="col-sm-6 col-xs-6" align="right">
+        <img src="img/heavy-rain-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-sm-6 col-xs-6" align="left">
+        <font class="temp-mini" id="temp2"></font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <h6>FRI MORNING</h6><h5>HEAVY RAIN</h5>
+        <p align="left" style="padding-top:8px;">
+        <b>POP:</b> 90%<br/>
+        <b>Rain:</b> ~15 mm<br/>
+        <b>Wind:</b> 20 km/h E<br/>
+        <b>Wind gust:</b> 35 km/h<br/>
+        <b>Humidity:</b> 85%<br/>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+
+<!--hidden mobile arrow-->
+   <div class="desktop-hide col-xs-2" align="center">
+    <div class="row">
+      <div class="col-xs-12">
+        <span class="img-center"></span>
+        <img src="img/arrow-right.png" class="show-arrow zoom img-responsive" />
+      </div>
+    </div>
+  </div>
+
+<!--box 3-->
+
+   <div class="col-sm-2 col-xs-6 weather-box hide-mobile" align="center">
+    <div class="row">
+      <div class="col-sm-6 col-xs-6" align="right">
+        <img src="img/heavy-rain-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-sm-6 col-xs-6" align="left">
+        <font class="temp-mini" id="temp3"></font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <h6>FRI MORNING</h6><h5>HEAVY RAIN</h5>
+        <p align="left" style="padding-top:8px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h E<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div>
+
+<!--box 4 -->
+
+    <div class="col-sm-2 col-xs-6 weather-box hide-mobile" align="center">
+    <div class="row">
+      <div class="col-sm-6 col-xs-6" align="right">
+        <img src="img/mostly-sunny-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-sm-6 col-xs-6" align="left">
+        <font class="temp-mini" id="temp4"></font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <h6>FRI AFTERNOON</h6><h5>MOSTLY SUNNY</h5>
+        <p align="left" style="padding-top:8px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h E<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div>
+
+<!--box 5-->
+
+    <div class="col-sm-2 col-xs-6 weather-box-last hide-mobile" align="center">
+    <div class="row">
+      <div class="col-sm-6 col-xs-6" align="right">
+        <img src="img/drizzle-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-sm-6 col-xs-6" align="left">
+        <font class="temp-mini" id="temp5"></font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <h6>FRI EVENING</h6><h5>LIGHT RAIN</h5>
+        <p align="left" style="padding-top:8px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h E<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div></div>
+
+<!--- forecast boxes 7 days -->
+<div class="row forecastbox2 fb-hide hide" align="center"> <!--hidden until toggled. 7 boxes cant be centered in 12 so is manually set back 2%-->
+
+<!--box 1-->
+  <div class="col-sm-1 col-sm-offset-2 col-xs-5 weather-box" align="center"> 
+    <div class="row">
+      <div class="col-xs-6 col-sm-12" align="center">
+        <img src="img/heavy-rain-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-xs-6 col-sm-12" align="center" style="padding-top:20px;">
+        <font class="temp-mini">15 °C</font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <h6>FRI</h6><h5>HEAVY RAIN</h5>
+        <p align="left" style="padding-top:8px;padding-left:5px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div>
+
+<!--box 2-->
+
+  <div class="col-sm-1 col-xs-5 weather-box-second" align="center">
+    <div class="row">
+      <div class="col-xs-6 col-sm-12" align="center">
+        <img src="img/mostly-sunny-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-xs-6 col-sm-12" align="center" style="padding-top:20px;">
+        <font class="temp-mini">16 °C</font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <h6>SAT</h6><h5>MOSTLY SUNNY</h5>
+        <p align="left" style="padding-top:8px;padding-left:5px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div>
+
+<!--hidden mobile arrow-->
+   <div class="desktop-hide col-xs-2" align="center">
+    <div class="row">
+      <div class="col-xs-12">
+        <span class="img-center"></span>
+        <img src="img/arrow-right.png" class="show-arrow zoom img-responsive" />
+      </div>
+    </div>
+  </div>
+
+<!--box 3-->
+
+   <div class="col-sm-1 col-xs-6 weather-box hide-mobile" align="center">
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <img src="img/mostly-sunny-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-xs-12" align="center" style="padding-top:20px;">
+        <font class="temp-mini">17 °C</font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <h6>SUN</h6><h5>MOSTLY SUNNY</h5>
+        <p align="left" style="padding-top:8px;padding-left:5px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div>
+
+<!--box 4 -->
+
+<div class="col-sm-1 col-xs-6 weather-box hide-mobile" align="center">
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <img src="img/heavy-rain-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-xs-12" align="center" style="padding-top:20px;">
+        <font class="temp-mini">14 °C</font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <h6>MON</h6><h5>HEAVY RAIN</h5>
+        <p align="left" style="padding-top:8px;padding-left:5px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h E<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div>
+
+<!--box 5-->
+
+<div class="col-sm-1 col-xs-6 weather-box hide-mobile" align="center">
+   <div class="row">
+      <div class="col-xs-12" align="center">
+        <img src="img/drizzle-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-xs-12" align="center" style="padding-top:20px;">
+        <font class="temp-mini">14 °C</font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <h6>TUE</h6><h5>LIGHT RAIN</h5>
+        <p align="left" style="padding-top:8px;padding-left:5px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h E<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div>
+
+<!-- box 6 -->
+<div class="col-sm-1 col-xs-6 weather-box hide-mobile" align="center">
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <img src="img/heavy-rain-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-xs-12" align="center" style="padding-top:20px;">
+      <font class="temp-mini">13 °C</font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <h6>WED</h6><h5>HEAVY RAIN</h5>
+        <p align="left" style="padding-top:8px;padding-left:5px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h E<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div>
+
+<!-- box 7 -->
+<div class="col-sm-1 col-xs-6 weather-box-last hide-mobile" align="center">
+<div class="row">
+      <div class="col-xs-12" align="center">
+        <img src="img/drizzle-gray.png" class="zoom img-responsive" />
+      </div>
+
+      <div class="col-xs-12" align="center" style="padding-top:20px;">
+        <font class="temp-mini">13 °C</font>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-12" align="center">
+        <h6>THU</h6><h5>LIGHT RAIN</h5>
+        <p align="left" style="padding-top:8px;padding-left:5px;">
+          <b>POP:</b> 90%<br/>
+          <b>Rain:</b> ~15 mm<br/>
+          <b>Wind:</b> 20 km/h E<br/>
+          <b>Wind gust:</b> 35 km/h<br/>
+          <b>Humidity:</b> 85%<br/>
+        </p>
+
+      </div>
+    </div>
+  </div></div>
+
+</div></div></div>
+
+<!---footer-->
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="footer-col col-sm-5 col-sm-offset-1" align="center">
+        <h2>Links</h2>
+        <a href="../documentation.pdf" target="_blank">documentation.pdf</a>
+        <br/><a href="../readme.txt" target="_blank">readme.txt</a>
+      </div>
+                    
+      <div class="footer-col col-sm-5" align="center">
+        <h2>Contact</h2>
+        <p>Tiffany Yu Ching Tsai
+        <br/>604 783 9822
+        <br/>tiffanytsai@tift.me</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // below current time + date script edited from https://jsfiddle.net/FLhpq/4/ and moment.js resources
+  $(function(){
+  setInterval(function(){
+    var divUtc = $('#divUTC');
+    var divLocal = $('#divLocal');  
+    //put UTC time into divUTC  
+    divUtc.text(moment.utc().format('YYYY-MM-DD HH:mm:ss'));      
+    
+    //get text from divUTC and conver to local timezone  
+    var localTime  = moment.utc(divUtc.text()).toDate();
+    localTime = moment(localTime).format('ddd MMM DD - HH:mm a');
+      divLocal.text(localTime);        
+  },1000);});
+
+// celcius to fahrenheit (random temp generating), with help from StackOverflow
+function displayCelcius() {
+  document.getElementById("mainTemp").innerHTML = c;
+  document.getElementById("temp1").innerHTML = c1 + ' °C';
+  document.getElementById("temp2").innerHTML = c2 + ' °C';
+  document.getElementById("temp3").innerHTML = c3 + ' °C';
+  document.getElementById("temp4").innerHTML = c4 + ' °C';
+  document.getElementById("temp5").innerHTML = c5 + ' °C';
+}
+
+function displayFahrenheit() {
+  document.getElementById("mainTemp").innerHTML = f;
+  document.getElementById("temp1").innerHTML = f1 + ' °F';
+  document.getElementById("temp2").innerHTML = f2 + ' °F';
+  document.getElementById("temp3").innerHTML = f3 + ' °F';
+  document.getElementById("temp4").innerHTML = f4 + ' °F';
+  document.getElementById("temp5").innerHTML = f5 + ' °F';
+}
+
+function init(){
+  c = Math.floor(Math.random() * 10) + 10;
+  f = Math.round(c * 9 / 5 + 32);
+  document.getElementById("mainTemp").innerHTML = c;
+
+  c1 = Math.floor(Math.random() * 10) + 10;
+  f1 = Math.round(c1 * 9 / 5 + 32);
+  document.getElementById("temp1").innerHTML = c1 + ' °C';
+
+  c2 = Math.floor(Math.random() * 10) + 10;
+  f2 = Math.round(c2 * 9 / 5 + 32);
+  document.getElementById("temp2").innerHTML = c2 + ' °C';
+
+  c3 = Math.floor(Math.random() * 10) + 10;
+  f3 = Math.round(c3 * 9 / 5 + 32);
+  document.getElementById("temp3").innerHTML = c3 + ' °C';
+
+  c4 = Math.floor(Math.random() * 10) + 10;
+  f4 = Math.round(c4 * 9 / 5 + 32);
+  document.getElementById("temp4").innerHTML = c4 + ' °C';
+
+  c5 = Math.floor(Math.random() * 10) + 10;
+  f5 = Math.round(c5 * 9 / 5 + 32);
+  document.getElementById("temp5").innerHTML = c5 + ' °C';
+}
+
+//button active inactive states
+
+$('.btn-group button').on('click', function(){
+    $(this).siblings().removeClass('active')
+    $(this).addClass('active');
+})
+
+//active forecast toggle
+
+function hideForecast1()
+{
+    $('.forecastbox').removeClass('fb-show')
+    $('.forecastbox').addClass('fb-hide')
+    $('.forecastbox2').removeClass('fb-hide')
+    $('.forecastbox2').removeClass('hide')
+    $('.forecastbox2').addClass('fb-show');    
+}
+
+function showForecast1()
+{
+    $('.forecastbox').removeClass('fb-hide')
+    $('.forecastbox').addClass('fb-show')
+    $('.forecastbox2').removeClass('fb-show')
+    $('.forecastbox2').addClass('fb-hide');
+}
+
+</script>
+</body>
+</html>
+

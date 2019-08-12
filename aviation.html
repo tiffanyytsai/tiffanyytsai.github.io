@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<head>
+<title>Tiffany Tsai / TIFT.ME</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Design portfolio of Tiffany Tsai - Toronto, Canada">
+<meta name="keywords" content="Graphic Design, Designer, UI/UX, Tiffany Tsai, Yu Ching Tsai">
+
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+
+  <!--- css ---->
+  <link rel="stylesheet" href="style/css/bootstrap.min.css" type="text/css"/> 
+  <link rel="stylesheet" href="style/css/main.css" type="text/css"/>
+  <link rel="stylesheet" href="style/css/style.css" type="text/css"/>
+
+</head>
+
+<body>
+<!--- borders ---->
+<div id="left"></div>
+<div id="right"></div>
+<div id="top"></div>
+<div id="bottom"></div>
+
+<!--- logo ---->
+<a href="http://www.tift.me"><div id="logotift"></div></a>
+
+<div id="nav">
+<ul>
+  <li><a href="about">about</a></li>
+  <li><a href="http://www.tift.me">work</a></li>
+</ul>
+</div>
+
+<div id="banner" style="width:auto;overflow:hidden;">
+<img src="img/aviation-top.jpg" class="img-responsive" style="width:100%;" />
+</div>
+
+<div class="container toptopw">
+
+<div class="row">
+<div class="col-md-1 col-sm-12"></div>
+<div class="col-md-4 col-sm-12">
+
+<h3>65 Years of Aviation Accidents</h3>
+<h6>storytelling with data visualization</h6><br/>
+</div>
+
+<div class="col-md-6 col-sm-12">
+<p>This project is a visualization of the aviation safety database for five major airlines - Air France, United Airlines, Soviet Air Force, EgyptAir, and Garuda Indonesia - from the years of 1945 to 2010. It focuses on percent fatality of each incident, and illustrates how air travel has become both safer and larger in occupancy.</p><br/><br/><br/><br/>
+</div>
+
+<div class="col-md-1 col-sm-12"></div></div>
+
+<div class="row">
+<div class="col-md-12 col-sm-12">
+
+<img src="img/aviation-full.jpg" class="img-responsive" alt="/"><br/>
+<img src="img/aviation-2.jpg" class="img-responsive" alt="/"><br/>
+<img src="img/aviation-3.jpg" class="img-responsive" alt="/"></div>
+
+
+<h2 align="center">© Tiffany Tsai 2016</h2>
+
+</div>
+
+<div class="col-md-2 col-sm-12"></div>
+</div></div></div>
+
+<!--- jq ---->
+  <script type="text/javascript" src="style/js/jquery-1.10.2.js"> </script>
+  <script type="text/javascript" src="style/js/script.js"></script>
+  <script type="text/javascript" src="style/js/bootstrap.js"></script>
+  <script src="style/js/main.js"></script>
+
+
+  <script>
+
+$(window).scroll(function() {
+
+    if ($(this).scrollTop()>0)
+     {$('#nav').fadeOut();}
+    else
+     {$('#nav').fadeIn();}
+      });
+
+</script>
+
+</body>

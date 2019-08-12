@@ -1,0 +1,402 @@
+body {
+	margin: 0 auto;
+	float: none;
+	font-size:12pt;
+	font-family: 'Open Sans', sans-serif;
+	color:#fff;
+	overflow-x:hidden;
+	}
+
+.container {
+	z-index:999;
+	position:relative;
+	text-align:center;
+	}
+
+.top-banner {
+	background: no-repeat center center;
+	background-attachment: scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	margin-bottom: 0px;
+	padding: 50px 0 80px;
+	z-index:999;
+	}
+
+#menu {
+	position:fixed;
+	top:15px;
+	right:25px;
+	z-index:999;
+	width:30px;
+	}
+
+.time-fixed { /* loading the local time takes 1 second and makes the entire container move down by one row when it loads, so I fixed it in its own div */ 
+	z-index:999;
+	top:20px;
+	position:absolute;
+	text-align:center;
+	width:95%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	}
+
+/* forecast boxes 36h and 7d*/
+.weatherbump { /*div to nest forecastbox and forecastbox2 into in same position*/
+	min-height:425px;
+    margin: 0 auto;
+    padding: 0 10px;
+	z-index:999;
+	position:relative;
+	text-align:center;
+	}
+
+.forecastbox, .forecastbox2 {
+	position: absolute;
+	width:100%;
+	margin-top: 40px;
+	padding-left:10px;
+	}
+
+.weather-box { /*box styling with right border */
+	display:block;
+	border-right:2px solid #666;
+	margin-bottom:25px;}
+
+/* seperating every second box so it does not have right border in mobile */ 
+.weather-box-second {
+	display:block;
+	border-right:2px solid #666;
+	margin-bottom:25px;}
+
+/* seperating last boxes so it never has right border*/ 
+.weather-box-last {
+	display:block;
+	margin-bottom:25px;}
+
+/* type */
+h1 {
+	font-size: 26px;
+	letter-spacing:6px;
+	font-weight:700;
+	text-transform:uppercase;
+	color:#fff;
+	line-height:0.8;
+	}
+
+h2 {
+	font-size: .7em;
+	letter-spacing:3px;
+	font-weight:600;
+	text-transform:uppercase;
+	color:#fff;
+	line-height:0.5;
+	}
+
+h3 {
+	font-size: 14px;
+	letter-spacing:1px;
+	font-style:italic;
+	font-weight: 300;
+	line-height:0.5;
+	text-decoration:underline;
+	}
+
+h3:hover {
+	font-style:italic;
+	font-weight: 600;
+	}
+
+.temp {
+	font-size: 50px;
+	letter-spacing:6px;
+	font-weight:700;
+	text-transform:uppercase;
+	color:#fff;
+	line-height:1;
+	}
+
+h4 {
+	font-size: .75em;
+	letter-spacing:3px;
+	font-weight:400;
+	text-transform:uppercase;
+	color:#fff;
+	line-height:1;
+	}
+
+h5 {
+	font-size: 11px;
+	letter-spacing:1px;
+	font-weight:400;
+	text-transform:uppercase;
+	color:#333132;
+	line-height:14px;
+	}
+
+
+h6 {
+	font-size: 11px;
+	letter-spacing:1px;
+	font-weight:800;
+	text-transform:uppercase;
+	color:#333132;
+	line-height:10px;
+	padding-top:10px;
+	}
+
+p {
+	color:#333132;
+	font-weight:400;
+	font-size:11px;
+	line-height:17px;
+	}
+
+p.thick{
+	color:#333132;
+	font-weight:700;
+	font-size:11px;
+	}
+
+.temp-mini {
+	font-size: 20px;
+	letter-spacing:1px;
+	font-weight:700;
+	text-transform:uppercase;
+	color:#333132;}
+
+/* forecast filters */ 
+
+.gray {
+	font-size: 12px;
+	letter-spacing:2px;
+	font-weight:600;
+	text-transform:uppercase;
+	color:#B0B0B0;
+	line-height:16px;
+	padding-top:8px;
+	}
+
+.gray-box {
+	border-radius: 18px;
+	background-color:#bbbbbb;
+	color:#fff;
+	font-size: 12px;
+	letter-spacing:2px;
+	font-weight:600;
+	width:auto;
+	min-height:30px;
+	}
+
+.term-forecast button {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	color:#fff;
+	letter-spacing:2px;
+	font-weight:300;
+	display:inline-block;
+	padding:7px 15px 0 15px;
+	text-transform:uppercase;
+	text-align:center;
+	letter-spacing:3px;
+	font-weight:300;
+	text-transform:uppercase;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	border: none;
+	cursor:pointer;
+	overflow: hidden;
+	outline:none;}
+
+.term-forecast button.active {
+	font-weight:700;
+	}
+
+/*slight sizing adjustments for devices*/
+@media only screen and (min-width: 768px) {
+h1 {font-size: 40px;}
+
+h3 {font-size: 10px;}
+
+.time-fixed {top:30px;}
+
+.desktop-hide {display:none;}
+
+#menu {
+	top:25px;
+	right:25px;
+	}
+
+.top-banner {margin-bottom:30px;}
+
+.forecastbox2 {
+	left:100px;
+	} /*compensating for the fact that 7 cant be centered in a 12 column grid */
+}
+
+/*centering circles approx to background for diff sizes*/ 
+@media only screen and (min-width: 1700px) {
+.circle {
+	position:relative;
+	top:40px;}
+
+.top-banner {margin-bottom:50px;}
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1700px) {
+.circle {
+	position:relative;
+	top:10px;}
+}
+
+@media only screen and (max-width:1400px) {
+.circle {
+	position:relative;
+	top:-10px;}
+}
+
+@media only screen and (max-width:420px) {
+.circle {
+	height:90px;
+	width:auto;}
+
+/*making filter bar fit mobile down to iphone 4 sizes */
+.term-forecast button {
+	font-size: 9px;
+	padding:7px 10px 0 10px;}
+
+.gray-box {
+	min-height:25px;}
+
+.temp {
+	font-size: 30px;}
+
+h4 {
+	letter-spacing:2px;}
+}
+
+/** animation **/
+.zoom {
+	-webkit-animation-name: zoom-in; 
+    -webkit-animation-duration: .5s; 
+    -webkit-animation-timing-function: ease-in; 
+    animation-timing-function: ease-in;
+	}
+
+@-webkit-keyframes fade-out {
+    0%   {opacity:1;}
+    100% {opacity:0;}
+	}
+
+@-webkit-keyframes fade-in {
+    0%   {opacity:0;}
+    100% {opacity:1;}
+	}
+
+@-webkit-keyframes zoom-in{from{-webkit-transform:scale(.5)} to{-webkit-transform:scale(1)}}
+@keyframes zoom-in{from{transform:scale(.5)} to{transform:scale(1)}}
+@-webkit-keyframes zoomin{from{-webkit-transform:scale(.5)} to{-webkit-transform:scale(1)}}
+@keyframes zoomin{from{transform:scale(.5)} to{transform:scale(1)}}
+
+/** hiding UTC time**/
+.hide {
+	display:none;
+	}
+
+/** hiding and showing mobile only for purpose of this mock **/
+@media only screen and (max-width: 768px) { 
+.hide-mobile {
+	display:none;
+	}
+
+.show-arrow {
+	-webkit-animation-name: fade-in; 
+    -webkit-animation-duration: 1s; 
+    animation-iteration-count: 1;
+    opacity:1;
+    padding-top:95px;}
+
+.weather-box-second {
+	display:block;
+	border-right:none;
+	min-height:100px;
+	margin-bottom:25px;}
+	}
+
+@media only screen and (min-width: 768px) {
+.show-arrow {
+    opacity:0;}}
+
+/* C to F conversions */
+.main button {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	letter-spacing:3px;
+	font-weight:300;
+	text-transform:uppercase;
+	color:#fff;
+	line-height:1;
+	background-color: transparent;
+	background-repeat:no-repeat;
+	border: none;
+	cursor:pointer;
+	overflow: hidden;
+	outline:none;}
+
+.main button.active {
+	font-weight:800;
+	}
+
+@media only screen and (max-width:420px) {
+.main button { 
+	font-size:12px;
+	letter-spacing:0px;
+	}
+}
+
+/*show hide forecast box from 36h to 7d */
+.fb-hide {
+	-webkit-animation-name: fade-out; 
+    -webkit-animation-duration: 1s; 
+    animation-iteration-count: 1;
+    opacity:0;
+	}
+
+.fb-show {
+	-webkit-animation-name: fade-in; 
+    -webkit-animation-duration: 1s; 
+    animation-iteration-count: 1;
+    opacity:1;
+	}
+
+/* footer */
+
+footer {
+	width:100%;
+	color: #fff;
+	padding-top: 25px;
+	padding-bottom:25px;
+	background-color: #00374e;
+}
+
+footer p {
+	color:#ffffff;
+	letter-spacing:1px;
+	font-weight:300;
+	font-size:11px;
+}
+
+footer a {
+	color:#1dd2ff;
+	letter-spacing:1px;
+	font-weight:300;
+	font-size:11px;
+}
+
+footer a:hover {
+	color:#fff;
+	letter-spacing:1px;
+	font-weight:300;
+	font-size:11px;}
