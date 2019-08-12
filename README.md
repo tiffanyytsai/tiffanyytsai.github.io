@@ -1,1 +1,3 @@
-# tift.me
+---
+permalink: /index.html
+---
