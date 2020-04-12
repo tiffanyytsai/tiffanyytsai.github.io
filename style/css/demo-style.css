@@ -199,6 +199,12 @@ strong {
 		padding: 50px 100px;
 	}
 	
+	@media only screen and (max-width: 992px) {
+		.featured-work, .select-work {
+			padding: 50px 25px;
+		}
+	}
+	
 	.featured-work .row, .select-work .row {
 		padding-top: 50px;
 	}
