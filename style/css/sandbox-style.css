@@ -168,6 +168,9 @@ strong {
 	font-weight: 700;
 }
 /** layout NEW 2020 **/
+.website-frame {
+	border-radius: 8px;
+}
 
 .test-box {
 	padding: 36px 24px;
@@ -290,6 +293,10 @@ strong {
 
 		#nav {
 			padding-right: 40px;}
+
+		.circle-tiff {
+				display:show;
+			}
 	}
 	@media only screen and (max-width: 600px) {
 		.featured-work, .select-work {
@@ -305,6 +312,10 @@ strong {
 		}
 
 		.logo-name {
+			display:none;
+		}
+		
+		.circle-tiff {
 			display:none;
 		}
 
