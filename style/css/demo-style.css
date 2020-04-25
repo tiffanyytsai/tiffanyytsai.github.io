@@ -283,11 +283,40 @@ strong {
 		padding: 75px 100px;
 	}
 	
-	@media only screen and (max-width: 992px) {
+	@media only screen and (min-width: 601px) {
+		.logotift-mobile {
+			display: none;
+		}
+		
+		#nav {
+			padding-right: 40px;}
+	}
+	@media only screen and (max-width: 600px) {
 		.featured-work, .select-work {
 			padding: 50px 25px;
 		}
+
+		.testimonials {
+			padding: 0px;
+		}
+
+		#nav {
+			padding-right: 10px;
+		}
+
+		.logo-name{
+			display:none;
+		}
+
+		.logotift-mobile {
+			display: show;
+			font-family: "Spectral", "serif";
+			font-weight: 700;
+			font-size: 32px;
+			color: white;
+		}
 	}
+
 	
 	.featured-work .row, .select-work .row {
 		padding-top: 50px;
@@ -342,19 +371,6 @@ strong {
 	}
 	
 
-	/* The device with borders */
-	.website-frame {
-		position: relative;
-		width: 100%;
-		height: auto;
-		margin: auto;
-		border: 16px white solid;
-		border-radius: 8px;
-		box-shadow: 0 0 16px 2px rgb(0,0,0, .25);
-	}
-
-
-
 	#nav {
 		position:fixed;
 		font-family: "Karla", sans-serif;
@@ -362,7 +378,6 @@ strong {
 		font-weight:400;
 		top:32px;
 		right:0px;
-		padding-right:40px;
 		font-size:18px;
 		z-index:999;
 		color: #ffffff;
