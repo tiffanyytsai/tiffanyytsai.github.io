@@ -89,7 +89,7 @@ h2 {
 
 h3 {
 	font-family: "Spectral", serif;
-	font-weight: 700;
+	font-weight: 400;
 	font-size: 24px;
 	line-height: 32px;
 	letter-spacing: -1px;
@@ -209,8 +209,8 @@ strong {
 }
 
 .green-line {
-	border-bottom: 1px solid rgba(13,55,53,.25);
-	width: 100%;
+	border-color: rgba(13,55,53,.25);
+	width: 25%;
 	margin: 40px 0;
 }
 
@@ -381,7 +381,9 @@ strong {
 		padding-bottom: 25px;
 	}
 	
-
+.bg-quote {
+	background-color: #F2F2EA;
+}
 	#nav {
 		font-family: "Karla", sans-serif;
 		font-weight: 300;
