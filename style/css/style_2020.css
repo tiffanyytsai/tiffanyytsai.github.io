@@ -169,6 +169,7 @@ strong {
 /** layout NEW 2020 **/
 .website-frame {
 	border-radius: 8px;
+	border: 1px solid #ebebeb;
 }
 
 .test-box {
@@ -221,6 +222,11 @@ strong {
 .mar-top-15 {
 	margin-top: 15px;
 }
+
+.mar-v-15 {
+	margin: 15px 0;
+}
+
 
 .mar-v-64 {
 	margin: 64px 0;
