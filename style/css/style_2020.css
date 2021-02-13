@@ -183,7 +183,7 @@ strong {
 }
 
 .toptop {
-	padding: 35px 100px;
+	padding: 35px 35px 35px 100px;
 	margin: 0 auto;
 	max-width:1400px;
 	z-index:1;}
@@ -244,6 +244,11 @@ strong {
     display: table;
 }
 
+@media only screen and (max-width: 991px) {
+	.work-thumbnail-mob {
+		padding-bottom: 25px;
+	}
+}
 /* button*/
 .helllooo {
 	border: 1px solid #0D3735;
