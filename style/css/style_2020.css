@@ -394,6 +394,14 @@ strong {
 	
 .bg-quote {
 	background-color: #F2F2EA;
+	text-align:center;
+	padding: 40px;
+}
+
+@media only screen and (max-width: 991px) {
+.bg-quote {
+	padding: 24px;
+}
 }
 	#nav {
 		font-family: "Karla", sans-serif;
