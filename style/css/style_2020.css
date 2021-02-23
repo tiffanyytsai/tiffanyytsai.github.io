@@ -115,7 +115,13 @@ h4 a:hover {
 }
 
 a {
+	color: #0D3735;
 	text-decoration: none;
+}
+
+a:hover {
+	color: #0D3735;
+	opacity: .8;
 }
 
 a:hover.h4 {
