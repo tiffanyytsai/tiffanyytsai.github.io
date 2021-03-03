@@ -436,8 +436,13 @@ strong {
 		overflow: hidden;
 		}
 	
-	#nav li {
+	#nav .nav-bottom li {
+		float: left;}
+
+	#nav .nav-top li {
 		float: right;}
+	
+
 	
 	#nav li a {
 		display: block;
